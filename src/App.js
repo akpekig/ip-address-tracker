@@ -1,7 +1,9 @@
 import { BsChevronRight } from "react-icons/bs";
+import { Loader } from "@googlemaps/js-api-loader";
+import React from 'react';
 import "./App.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header>
@@ -21,6 +23,7 @@ function App() {
           IP Address Location Timezone UTC ISP
         </form>
       </header>
+      <div id="map"></div>
       <div className="attribution">
         Challenge by{" "}
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
@@ -32,4 +35,15 @@ function App() {
   );
 }
 
-export default App;
+const loader = new Loader({
+  apiKey: "AIzaSyD89y5MUDYd1B0uD6UiJMr-1ztnTlce8Dg",
+  version: "weekly",
+});
+
+loader.load().then(() => {
+  // eslint-disable-next-line no-undef
+  let map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+});
