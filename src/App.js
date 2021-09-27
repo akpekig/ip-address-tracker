@@ -35,8 +35,10 @@ export default function App() {
   );
 }
 
+require('dotenv').config();
+
 const loader = new Loader({
-  apiKey: "AIzaSyD89y5MUDYd1B0uD6UiJMr-1ztnTlce8Dg",
+  apiKey: process.env.GOOGLE_MAPS_API_KEY,
   version: "weekly",
 });
 
@@ -47,3 +49,17 @@ loader.load().then(() => {
     zoom: 8,
   });
 });
+
+var http = require('http');
+
+var ip = '8.8.8.8';
+var api_key = process.env.GEO_IPIFY_API_KEY;
+var api_url = 'https://geo.ipify.org/api/v1?';
+
+var url = api_url + 'apiKey=' + api_key + '&ipAddress=' + ip;
+
+http.get(url, function(response) {
+    var str = '';
+    response.on('data', function(chunk) { str += chunk; });
+    response.on('end', function() { console.log(str); });
+}).end();
