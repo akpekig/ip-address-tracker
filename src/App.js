@@ -61,7 +61,7 @@ export default function App() {
   }
 
   return (
-    <div className="App">
+    <div style={{ width: "100%", height: "100%" }}>
       <header>
         <h1>IP Address Tracker</h1>
         <form 
@@ -74,15 +74,15 @@ export default function App() {
             minLength="7"
             maxLength="15"
             pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
-            placeholder="Search for any IP address or domain"
+            placeholder="Search for any IP address"
             onChange={e => setInput(e.target.value)}
             onInvalid={e => e.target.setCustomValidity("Please enter a valid IP address!")}
             required
           />
           <button type="submit"><BsChevronRight /></button> 
         </form>
+        <Datalist addressIP={addressIP} location={location} serviceProvider={serviceProvider} />
       </header>
-      <Datalist addressIP={addressIP} location={location} serviceProvider={serviceProvider} />
     </div>
   );
 }
@@ -108,23 +108,25 @@ const Datalist = (props) => {
     });
   });
   return (
-    <dl>
-          <div>
-            <dt>IP Address</dt>
-            <dd>{props.addressIP}</dd>
-          </div>
-          <div>
-            <dt>Location</dt>
-            <dd>{props.location.city}, {props.location.region}, {props.location.country}</dd>
-          </div>
-          <div>
-            <dt>Timezone</dt>
-            <dd>UTC {props.location.timezone}</dd>
-          </div>
-          <div>
-            <dt>ISP</dt>
-            <dd>{props.serviceProvider}</dd>
-          </div>
-        </dl>
+    <article>
+      <dl>
+        <div>
+          <dt>IP Address</dt>
+          <dd>{props.addressIP}</dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd>{props.location.city}, {props.location.region}, {props.location.country}</dd>
+        </div>
+        <div>
+          <dt>Timezone</dt>
+          <dd>UTC {props.location.timezone}</dd>
+        </div>
+        <div id="last">
+          <dt>ISP</dt>
+          <dd>{props.serviceProvider}</dd>
+        </div>
+      </dl>
+    </article>
   );
 }
