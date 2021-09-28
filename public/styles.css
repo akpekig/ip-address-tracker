@@ -52,6 +52,9 @@ header form button {
   background-color: #2b2b2b;
   color: white;
 }
+header form:hover {
+  cursor: pointer;
+}
 header article {
   background-color: transparent;
 }

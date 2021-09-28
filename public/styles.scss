@@ -53,6 +53,9 @@ header {
             background-color: $very-dark-grey;
             color: white;
         }
+        &:hover{
+            cursor: pointer;
+        }
     }
     article {
         background-color: transparent;
