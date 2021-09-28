@@ -1,7 +1,6 @@
 import { BsChevronRight } from "react-icons/bs";
 import { Loader } from "@googlemaps/js-api-loader";
 import React, { useState } from 'react';
-import "./App.css";
 
 // Initialise API for IP tracker
 var api_key = process.env.REACT_APP_GEO_IPIFY_KEY;
